@@ -65,7 +65,7 @@ subset(students_grades_df, subset = Accounting > 80 & Legal_age. == TRUE)
 
 #6 funcion para recorrer la matriz result_students
 
-#6.1
+#6.1 y # 6.2
 students_projection <- function(matriz){
   for (row in 1:nrow(matriz)) { #recorrer por filas... cada una
     for (col in 1:ncol(matriz)) {
@@ -82,9 +82,9 @@ students_projection <- function(matriz){
 }
 
 print(result_students[,1:4])
-students_projection(result_students[,1:4])
 
-# 6.2
+# 6.3
+students_projection(result_students[,1:4])
 
 
 ```
