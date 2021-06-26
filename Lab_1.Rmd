@@ -1,0 +1,91 @@
+#Creación de vectores
+
+```{r}
+## 1 vectores y matrices
+
+#1.1
+student_1 <- c(50.4, 62.3, 92.1, 77.6, TRUE)
+student_2 <- c(41.7, 87.9, 75.3, 72.4, FALSE )
+student_3 <- c(30.3, 67.8, 69.3, 71.2, FALSE )
+student_4 <- c(65.4, 85.1, 92.3, 96.8, TRUE )
+student_5 <- c(70.4, 88.2, 95.2, 90.7, TRUE )
+
+#1.2
+students_vector <- c(student_1, student_2, student_3, student_4, student_5)
+students_vector
+#1.3
+students_matrix <- matrix(students_vector, nrow=5, byrow= TRUE)
+students_matrix
+
+## 2 nombrado de matriz
+
+name_students <- c("Lily Brown", "Davis Moore", "Susan Taylor", "Mike Jones", "Tom Hill")
+
+name_courses_legal_age <- c("TIC", "Accounting", "Psychology", "Ethics", "Legal_age”")
+
+#Filas estudiantes y columnas los cursos
+
+colnames(students_matrix) <- name_courses_legal_age # filas
+
+rownames(students_matrix) <- name_students # columnas
+
+students_matrix
+
+
+# 3 rowSums, cbind
+
+#3.1
+total_grade_student <- rowSums(students_matrix[,1:4])
+total_grade_student
+
+#3.2
+total_grade_student <- cbind(students_matrix,total_grade_student)
+total_grade_student
+
+result_students <- total_grade_student
+total_grade_student
+result_students
+
+#4. seleccionar un elemento de la matriz
+
+#4.1 fila 1,3,5 y columnas 2,4
+selected_elements <- result_students[c(1,3,5),2:5]
+
+selected_elements
+
+# 5. Data frames
+
+#5.1
+students_grades_df <- data.frame(selected_elements)
+students_grades_df
+
+#5.2
+subset(students_grades_df, subset = Accounting > 80 & Legal_age. == TRUE)
+
+
+#6 funcion para recorrer la matriz result_students
+
+#6.1
+students_projection <- function(matriz){
+  for (row in 1:nrow(matriz)) { #recorrer por filas... cada una
+    for (col in 1:ncol(matriz)) {
+      print(paste("En la fila", row, "y Columna", col, "tiene", matriz[row,col]))
+      if (matriz[row,col] <= 45){
+        print("Student at risk")
+      }else if (matriz[row,col] > 45 & matriz[row,col] < 61 ){
+        print("Student may be approved")
+      }else if (matriz[row,col] >= 61){
+        print("“Student approved")
+      }
+    }
+  }
+}
+
+print(result_students[,1:4])
+students_projection(result_students[,1:4])
+
+# 6.2
+
+
+```
+
